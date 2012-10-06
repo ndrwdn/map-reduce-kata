@@ -1,7 +1,7 @@
-(ns map-reduce-kata.average-movie-scores-by-year-spec
+(ns map-reduce-kata.movie.average-scores-by-year-spec
     (:use
         [speclj.core]
-        [map-reduce-kata.average-movie-scores-by-year]))
+        [map-reduce-kata.movie.average-scores-by-year]))
 
 (defn- round
   [n]

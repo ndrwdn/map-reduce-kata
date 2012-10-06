@@ -1,7 +1,7 @@
-(ns map-reduce-kata.word-mapper-spec
+(ns map-reduce-kata.word-count.mapper-spec
     (:use
         [speclj.core]
-        [map-reduce-kata.word-mapper]))
+        [map-reduce-kata.word-count.mapper]))
 
 (describe "Word counter"
   (it "Find number of instances of words in collection of strings."

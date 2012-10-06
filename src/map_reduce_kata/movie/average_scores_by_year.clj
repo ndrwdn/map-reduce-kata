@@ -1,6 +1,6 @@
-(ns map-reduce-kata.average-movie-scores-by-year
+(ns map-reduce-kata.movie.average-scores-by-year
   (:require
-    [map-reduce-kata.movie-data-source :as s]))
+    [map-reduce-kata.movie.data-source :as s]))
 
 (defn- get-year-and-score
   "Gets a map of year and score."

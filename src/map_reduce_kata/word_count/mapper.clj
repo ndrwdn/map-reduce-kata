@@ -1,4 +1,4 @@
-(ns map-reduce-kata.word-mapper
+(ns map-reduce-kata.word-count.mapper
   (:require
     [clojure.string :as cstr]))
 

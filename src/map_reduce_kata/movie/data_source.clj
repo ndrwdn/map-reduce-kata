@@ -1,4 +1,4 @@
-(ns map-reduce-kata.movie-data-source
+(ns map-reduce-kata.movie.data-source
   (:require
     [clojure.string :as cstr]))
 

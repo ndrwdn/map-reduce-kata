@@ -1,7 +1,7 @@
-(ns map-reduce-kata.year-with-highest-average-score
+(ns map-reduce-kata.movie.year-with-highest-average-score
   (:require
-    [map-reduce-kata.movie-data-source :as s]
-    [map-reduce-kata.average-movie-scores-by-year :as avg]))
+    [map-reduce-kata.movie.data-source :as s]
+    [map-reduce-kata.movie.average-scores-by-year :as avg]))
 
 (defn- compare-scores
   "Compares two year's scores."

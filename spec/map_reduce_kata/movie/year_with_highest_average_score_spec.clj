@@ -1,7 +1,7 @@
-(ns map-reduce-kata.year-with-highest-average-score-spec
+(ns map-reduce-kata.movie.year-with-highest-average-score-spec
     (:use
         [speclj.core]
-        [map-reduce-kata.year-with-highest-average-score]))
+        [map-reduce-kata.movie.year-with-highest-average-score]))
 
 (describe "Finds year with highest movie score."
   (it "Highest movie score in small data set."
