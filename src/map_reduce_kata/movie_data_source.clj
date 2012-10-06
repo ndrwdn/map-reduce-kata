@@ -8,13 +8,21 @@
   (let [data-path (str "data/" fname)]
     (slurp data-path)))
 
+(defn- transform-data
+  "Takes a collection of data values and
+   transforms them to the correct data-types."
+  [data]
+  (let [score (Double/parseDouble (first data))
+        title (second data)
+        year (keyword (last data))]
+    (zipmap [:score :title :year] (vector score title year))))
+
 (defn- map-data
   "Takes a collection of vectors of data and
    turns it into a vector hashmaps with field names."
   [data]
-  (let [data-without-vote-counts (map rest data)
-        add-field-names #(zipmap [:score :title :year] %)]
-    (map add-field-names data-without-vote-counts)))
+  (let [data-without-vote-counts (map rest data)]
+    (map transform-data data-without-vote-counts)))
 
 (defn- parse-data
   "Parses data into vector of maps"

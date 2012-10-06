@@ -5,4 +5,4 @@
 
 (describe "Finds highest rated movie for each year"
   (it "Highest rated movie for 1994"
-    (should= 9.2 ((movie-ratings "movies.txt") :1994))))
+    (should= "The Shawshank Redemption" (((movie-ratings "movies.txt") :1994) :title))))

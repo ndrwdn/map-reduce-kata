@@ -2,27 +2,31 @@
   (:require
     [map-reduce-kata.movie-data-source :as s]))
 
-(defn- convert-data-to-year-rating-map
+(defn- map-data-to-year
   "Converts a movie data hashmap to a year to rating hashmap."
   [movie-data]
-  (let [year (keyword (movie-data :year))
-        rating (Double/parseDouble (movie-data :score))]
-    (hash-map year rating)))
+  (hash-map (movie-data :year) movie-data))
 
 (defn- movie-ratings-per-year
   "Gets a collection of hashmaps of year to rating for that year."
   [data]
-  (map convert-data-to-year-rating-map data))
+  (map map-data-to-year data))
 
 (defn- get-max-rating
   "Creates a hashmap based on year-maximums with the correct
    maximum rating for the year in the year-rating hashmap."
-  [year-maximums year-rating]
-  (let [year (first (keys year-rating))
-        rating (year-rating year)
-        current-max (year-maximums year 0.0)
-        new-max (max current-max rating)]
-    (assoc year-maximums year new-max)))
+  [year-maximums movie-to-year-map]
+  (let [movie-data (first (vals movie-to-year-map))
+        year (movie-data :year)
+        score (movie-data :score)
+
+        current-movie-data (year-maximums year {:score 0.0})
+        current-max (current-movie-data :score)
+
+        max-movie-data (if (> score current-max)
+                         movie-data
+                         current-movie-data)]
+    (assoc year-maximums year max-movie-data)))
 
 (defn- max-rating-per-year
   "Gets the maximum rating for a year."
