@@ -1,15 +1,8 @@
 # map_reduce_kata
 
-A Clojure library designed to ... well, that part is up to you.
-
-Includes speclj.
+A Clojure version of Tom Adams MapReduce kata (see http://www.github.com/tadams/MapReduce).
 
 ## Usage
 
-FIXME
-
-## License
-
-Copyright 2012 FIXME
-
-
+Using lein and speclj:
+lein spec -f d
