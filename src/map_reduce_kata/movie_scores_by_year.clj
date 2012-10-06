@@ -1,20 +1,20 @@
-(ns map-reduce-kata.movie-ratings-by-year
+(ns map-reduce-kata.movie-scores-by-year
   (:require
     [map-reduce-kata.movie-data-source :as s]))
 
 (defn- map-data-to-year
-  "Converts a movie data hashmap to a year to rating hashmap."
+  "Converts a movie data hashmap to a year to score hashmap."
   [movie-data]
   (hash-map (movie-data :year) movie-data))
 
-(defn- movie-ratings-per-year
-  "Gets a collection of hashmaps of year to rating for that year."
+(defn- movie-scores-per-year
+  "Gets a collection of hashmaps of year to score for that year."
   [data]
   (map map-data-to-year data))
 
-(defn- get-max-rating
+(defn- get-max-score
   "Creates a hashmap based on year-maximums with the correct
-   maximum rating for the year in the year-rating hashmap."
+   maximum score for the year in the year-score hashmap."
   [year-maximums movie-to-year-map]
   (let [movie-data (first (vals movie-to-year-map))
         year (movie-data :year)
@@ -28,14 +28,14 @@
                          current-movie-data)]
     (assoc year-maximums year max-movie-data)))
 
-(defn- max-rating-per-year
-  "Gets the maximum rating for a year."
-  [ratings]
-  (reduce get-max-rating {} ratings))
+(defn- max-score-per-year
+  "Gets the maximum score for a year."
+  [scores]
+  (reduce get-max-score {} scores))
 
-(defn movie-ratings
-  "Gets a hashmap of year to highest rated movie for that year."
+(defn movie-scores
+  "Gets a hashmap of year to highest scored movie for that year."
   [fname]
   (let [data (s/read-and-parse-data fname)
-        ratings (movie-ratings-per-year data)]
-    (max-rating-per-year ratings)))
+        scores (movie-scores-per-year data)]
+    (max-score-per-year scores)))
